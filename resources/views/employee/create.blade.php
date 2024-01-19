@@ -202,7 +202,6 @@
 
                 // Event addedfile: Menambahkan tombol hapus untuk setiap file yang diunggah
                 myDropzone.on("addedfile", function(file) {
-                    $('#isUpload').val(1);
                     photoCount(1);
 
                     // Menggunakan hash (contoh: MD5) sebagai nama file baru

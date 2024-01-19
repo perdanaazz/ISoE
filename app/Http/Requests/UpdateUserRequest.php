@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'level'      => 'required|string|max:255',
             'position'   => 'required|string|max:255',
             'salary'     => 'required|integer',
-            'photo'      => 'required',
+            // 'photo'      => 'required',
         ];
     }
 }

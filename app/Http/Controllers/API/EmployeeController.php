@@ -119,14 +119,18 @@ class EmployeeController extends Controller
                 'level'      => $request->level,
                 'position'   => $request->position,
                 'salary'     => $request->salary,
-                'photo_id'   => $request->photo_id,
             ]);
 
             // Delete Photo Upload which not same with photo ID
             $employeePhoto = EmployeePhoto::where('employee_id', $request->employee_id)
                 ->where('rand', '!=', $request->photo_id)
                 ->get();
-            $this->deleteDBS($employeePhoto); // From Traits
+            if ($request->photo) {
+                $employee->update([
+                    'photo_id' => $request->photo_id,
+                ]);
+                $this->deleteDBS($employeePhoto); // From Traits
+            }
             DB::commit();
 
             return ResponseFormatter::success($employee, 'Success update data');
